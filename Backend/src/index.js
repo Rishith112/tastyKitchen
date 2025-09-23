@@ -14,6 +14,10 @@ app.use(cors());
 app.use("/api/users", router);
 app.use("/api/restaurants", routes);
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 
 const URL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 5000;
