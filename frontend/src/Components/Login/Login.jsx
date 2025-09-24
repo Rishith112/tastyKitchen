@@ -21,7 +21,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let url = 'http://localhost:3000/api/users/login';
+        let url = 'https://tastykitchen-backend-uok6.onrender.com/users/login';
         const userDetails = { username, password };
         const options = {
             method: 'POST',
