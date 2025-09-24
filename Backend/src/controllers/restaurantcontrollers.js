@@ -47,8 +47,8 @@ export async function getRestaurantList(req, res) {
     try {
         const { offset = 0, limit = 9, sort_by_rating = "Highest" } = req.query;
         const sortOrder = sort_by_rating === "Lowest" ? 1 : -1;
-        const restaurants = await Restaurant.find()
-            .sort({ rating: sortOrder })
+        const restaurants = await Restaurant.find({})
+            .sort({ "user_rating.rating": sortOrder })
             .skip(Number(offset))
             .limit(Number(limit));
         const total = await Restaurant.countDocuments();

@@ -7,6 +7,7 @@ import Cart from './Components/Cart/Cart';
 import PaymentSuccess from './Components/PaymentSuccessful/PaymentSuccessful';
 import CartProvider from './Components/CartProvider/CartProvider.jsx';
 import PageNotFound from './Components/PageNotFound/PageNotFound.jsx';
+import SignUp from './Components/SignUp/SignUp.jsx';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     <CartProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path='/' element={<SignUp />} />
           <Route path="/home" element={
             <ProtectedRouting>
               <Home />

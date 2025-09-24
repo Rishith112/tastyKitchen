@@ -1,33 +1,32 @@
-import User from "../models/userModel.js";
+import UserValue from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 
-export const registerUser = async (req, res) => {
+
+export async function registerUser(req, res) {
+  try {
     const { username, password } = req.body;
-    try {
-        const existingUser = await User.findOne({ username });
-        if (existingUser) {
-            return res.status(400).json({ message: "User with this email or phone number already exists" });
-        }
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({
-            username,
-            password: hashedPassword,
-        });
-        await newUser.save();
-        const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: "12h" });
-        res.status(201).json({ token, message: "User registered successfully" });
-    } catch (error) {
-        console.error("Error in registering user:", error);
-        res.status(500).json({ message: "Server error" });
+    if (!username || !password) {
+      return res.status(400).json({ message: "Username and password required" });
     }
+    const existingUser = await UserValue.findOne({ username });
+    if (existingUser) {
+      return res.status(409).json({ message: "Username already exists" });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new UserValue({ username, password: hashedPassword });
+    await user.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 }
 
 export const loginUser = async (req, res) => {
     const { username, password } = req.body;
     try {
-        const user = await User.findOne({ username });
+        const user = await UserValue.findOne({ username });
         if (!user) {
             return res.status(400).json({ message: "Invalid email or phone number" });
         }
@@ -45,7 +44,7 @@ export const loginUser = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
     try {
-        const user = await User.find();
+        const user = await UserValue.find();
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
