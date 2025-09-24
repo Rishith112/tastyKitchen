@@ -18,7 +18,7 @@ function Items() {
         async function fetchRestaurantDetails() {
             setLoading(true);
             try {
-                const url = `http://localhost:3000/api/restaurants/items/${restaurantId}`;
+                const url = `https://tastykitchen-backend-uok6.onrender.com/api/restaurants/items/${restaurantId}`;
                 const jwt = Cookies.get('jwt_token');
                 const options ={
                   method: 'GET',
