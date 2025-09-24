@@ -9,7 +9,7 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = 'http://localhost:3000/api/users/register';
+        const url = 'https://tastykitchen-backend-uok6.onrender.com/api/users/register';
         const userDetails = { username, password };
         const options = {
             method: 'POST',
