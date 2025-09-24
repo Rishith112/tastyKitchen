@@ -21,7 +21,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let url = 'https://tastykitchen-backend-uok6.onrender.com/users/login';
+        let url = 'https://tastykitchen-backend-uok6.onrender.com/api/users/login';
         const userDetails = { username, password };
         const options = {
             method: 'POST',
