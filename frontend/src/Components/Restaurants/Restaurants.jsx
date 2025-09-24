@@ -19,7 +19,7 @@ function Restaurants() {
     async function fetchRestaurants() {
       setLoading(true);
       try {
-        const upi = `http://localhost:3000/api/restaurants?offset=${offset}&limit=${LIMIT}&sort_by_rating=${sort}`;
+        const upi = `https://tastykitchen-backend-uok6.onrender.com/api/restaurants?offset=${offset}&limit=${LIMIT}&sort_by_rating=${sort}`;
         const jwt = Cookies.get('jwt_token');
         const options ={
           method: 'GET',
