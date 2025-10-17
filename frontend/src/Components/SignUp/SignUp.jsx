@@ -65,7 +65,7 @@ const SignUp = () => {
                     {error && <div className="text-red-500 text-xs mt-2">{error}</div>}
                     <button
                         className="mt-4 text-xs text-[#f59e0b] underline"
-                        onClick={() => navigate('/login')}
+                        onClick={() => navigate('/')}
                     >
                         Already have an account? Login
                     </button>
