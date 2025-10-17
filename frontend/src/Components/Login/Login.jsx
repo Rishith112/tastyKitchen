@@ -82,6 +82,12 @@ const Login = () => {
                         <button type="submit" className="w-full bg-[#f59e0b] text-white py-2 rounded mt-2 font-medium hover:bg-[#d97706] transition-colors">Login</button>
                     </form>
                     {error && <div className="text-red-500 text-xs mt-2">{error}</div>}
+                    <button
+                        className="mt-4 text-xs text-[#f59e0b] underline"
+                        onClick={() => navigate('/signup')}
+                    >
+                        Don't have an account? SignUp
+                    </button>
                 </div>
             </div>
             {/* Right: Image */}
