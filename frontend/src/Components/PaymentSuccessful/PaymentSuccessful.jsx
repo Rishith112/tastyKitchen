@@ -19,7 +19,7 @@ function PaymentSuccess() {
         <p className='pb-4'>Thank you for Ordering</p>
         <p className='pb-4'>Your Payment is Successfully completed.</p>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/login')}
           className="px-6 py-2 bg-orange-400 text-white rounded-lg shadow-md h-10"
         >
           Go to Home Page
