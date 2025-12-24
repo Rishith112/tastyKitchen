@@ -35,7 +35,7 @@ function Cart() {
                     Looks like you haven't added anything to your cart yet.
                 </p>
                 <button
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate('/login')}
                     className="px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition-colors duration-200"
                 >
                     Shop Now
