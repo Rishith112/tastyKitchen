@@ -10,7 +10,7 @@ function Header() {
 
   const handleLogOut = () => {
     document.cookie = "jwt_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    navigate('/', { replace: true });
+    navigate('/login', { replace: true });
   };
 
   return (
