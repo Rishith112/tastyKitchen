@@ -7,13 +7,6 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const jwt = Cookies.get('jwt_token');
-        if (jwt) {
-            navigate('/home', { replace: true });
-        }
-    }, [navigate]);;
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const url = 'https://tastykitchen-backend-uok6.onrender.com/api/users/register';
