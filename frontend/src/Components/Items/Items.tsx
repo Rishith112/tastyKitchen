@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import { useCart } from '../CartContext/CartContext.js';
+import Header from '../Header/Header.tsx';
+import Footer from '../Footer/Footer.tsx';
+import { useCart } from '../CartContext/CartContext.ts';
+import type { FoodItems } from '../../types/globalTypes.ts';
 
 function Items() {
     const { restaurantId } = useParams();
     const navigate = useNavigate(); 
     const { addItemToCart, cartItems, incrementItemQuantity, decrementItemQuantity } = useCart();
 
-    const [restaurantDetails, setRestaurantDetails] = useState(null); 
+    const [restaurantDetails, setRestaurantDetails] = useState<FoodItems | null>(null); 
     const [loading, setLoading] = useState(true); 
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string|null>(null);
 
     useEffect(() => {
         async function fetchRestaurantDetails() {
@@ -112,7 +113,7 @@ function Items() {
                           src={image_url}
                           alt={name}
                           className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg shadow-lg flex-shrink-0" // flex-shrink-0 prevents image from shrinking
-                          onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x200/cccccc/333333?text=Restaurant+Image"; }}
+                          onError={(e:  React.SyntheticEvent<HTMLImageElement, Event>) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/400x200/cccccc/333333?text=Restaurant+Image"; }}
                       />
                       
                       {/* Restaurant Details Text */}

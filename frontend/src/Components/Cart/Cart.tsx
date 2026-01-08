@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../CartContext/CartContext.js';
-import Header from '../Header/Header.jsx';
+import { useCart } from '../CartContext/CartContext.ts';
+import Header from '../Header/Header.tsx';
 
 function Cart() {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ function Cart() {
                             {/* Total Item Price */}
                             {/* Mobile: Aligned to the right. Desktop: Aligned to the right. */}
                             <div className="font-semibold text-orange-500 justify-self-end text-right">
-                                ₹{item.cost * item.quantity}
+                                ₹{item.cost * item.quantity!}
                             </div>
                         </div>
                     ))}

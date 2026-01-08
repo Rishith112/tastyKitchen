@@ -1,7 +1,7 @@
 // ...existing imports...
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Restaurants from '../Restaurants/Restaurants';
+import Header from '../Header/Header.tsx';
+import Footer from '../Footer/Footer.tsx';
+import Restaurants from '../Restaurants/Restaurants.tsx';
 
 function Home() {
   return (

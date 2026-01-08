@@ -4,8 +4,8 @@ import Cookies from 'js-cookie';
 
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
 
     // Helper to get cookie value
@@ -19,7 +19,7 @@ const Login = () => {
     }, [navigate]);
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         let url = 'https://tastykitchen-backend-uok6.onrender.com/api/users/login';
         const userDetails = { username, password };

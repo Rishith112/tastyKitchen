@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import type { RestaurantType } from '../../types/globalTypes.ts';
 
 
 const LIMIT = 9;
@@ -9,7 +10,7 @@ function Restaurants() {
   const navigate = useNavigate(); // Initialize navigate hook
 
   // Restaurant state and logic
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
   const [total, setTotal] = useState(0);
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -43,10 +44,10 @@ function Restaurants() {
   // Pagination
   const totalPages = Math.ceil(total / LIMIT);
   const currentPage = Math.floor(offset / LIMIT) + 1;
-  const goToPage = (page) => setOffset((page - 1) * LIMIT);
+  const goToPage = (page : number) => setOffset((page - 1) * LIMIT);
 
     // Function to handle clicking on a restaurant card
-  const handleRestaurantClick = (restaurantId) => {
+  const handleRestaurantClick = (restaurantId : string) => {
     navigate(`/restaurants/${restaurantId}`); // Navigate to the items page for the clicked restaurant
   };
 

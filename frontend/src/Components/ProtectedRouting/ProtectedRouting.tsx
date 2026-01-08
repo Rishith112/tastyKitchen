@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 
 
-const ProtectedRouting = ({ children }) => {
+const ProtectedRouting = ({ children }: {children : React.ReactNode}) => {
     const jwt = Cookies.get('jwt_token');
     if (!jwt) {
         return <Navigate to="/" replace />;

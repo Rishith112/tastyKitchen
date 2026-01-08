@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { CartContext } from '../CartContext/CartContext.js';
+import { CartContext } from '../CartContext/CartContext.ts';
+import type { ContextType, FoodItemType } from '../../types/globalTypes.ts';
 
-const CartProvider = ({ children }) => {
+const CartProvider = ({ children }: {children: React.ReactNode}) => {
   const [cartItems, setCartItems] = useState(() => {
     try {
       const localData = localStorage.getItem('food-delivery-cart');
@@ -16,13 +17,13 @@ const CartProvider = ({ children }) => {
     localStorage.setItem('food-delivery-cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addItemToCart = (item) => {
-    setCartItems((prevItems) => {
+  const addItemToCart = (item : FoodItemType) => {
+    setCartItems((prevItems : FoodItemType[]) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
-        return prevItems.map((cartItem) =>
+        return prevItems.map((cartItem : FoodItemType) =>
           cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity! + 1 }
             : cartItem
         );
       } else {
@@ -31,27 +32,27 @@ const CartProvider = ({ children }) => {
     });
   };
 
-  const removeItemFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  const removeItemFromCart = (itemId: string) => {
+    setCartItems((prevItems: FoodItemType[]) => prevItems.filter((item) => item.id !== itemId));
   };
 
-  const incrementItemQuantity = (itemId) => {
-    setCartItems((prevItems) =>
+  const incrementItemQuantity = (itemId: string) => {
+    setCartItems((prevItems: FoodItemType[]) =>
       prevItems.map((item) =>
-        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === itemId ? { ...item, quantity: item.quantity! + 1 } : item
       )
     );
   };
 
-  const decrementItemQuantity = (itemId) => {
-    setCartItems((prevItems) =>
+  const decrementItemQuantity = (itemId: string) => {
+    setCartItems((prevItems: FoodItemType[]) =>
       prevItems
         .map((item) =>
           item.id === itemId
-            ? { ...item, quantity: Math.max(0, item.quantity - 1) }
+            ? { ...item, quantity: Math.max(0, item.quantity! - 1) }
             : item
         )
-        .filter((item) => item.quantity > 0)
+        .filter((item) => item.quantity! > 0)
     );
   };
 
@@ -59,10 +60,10 @@ const CartProvider = ({ children }) => {
     setCartItems([]);
   }
 
-  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  const totalCost = cartItems.reduce((acc, item) => acc + item.cost * item.quantity, 0);
+  const totalItems = cartItems.reduce((acc: number, item: FoodItemType) => acc + item?.quantity! , 0);
+  const totalCost = cartItems.reduce((acc: number, item: FoodItemType) => acc + item.cost * item.quantity!, 0);
 
-  const contextValue = {
+  const contextValue: ContextType = {
     cartItems,
     totalItems,
     totalCost,

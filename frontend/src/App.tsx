@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home/Home';
-import Login from './Components/Login/Login';
-import ProtectedRouting from './Components/ProtectedRouting/ProtectedRouting';
-import Items from './Components/Items/Items';
-import Cart from './Components/Cart/Cart';
-import PaymentSuccess from './Components/PaymentSuccessful/PaymentSuccessful';
-import CartProvider from './Components/CartProvider/CartProvider.jsx';
-import PageNotFound from './Components/PageNotFound/PageNotFound.jsx';
-import SignUp from './Components/SignUp/SignUp.jsx';
+import Home from './Components/Home/Home.tsx';
+import Login from './Components/Login/Login.tsx';
+import ProtectedRouting from './Components/ProtectedRouting/ProtectedRouting.tsx';
+import Items from './Components/Items/Items.tsx';
+import Cart from './Components/Cart/Cart.tsx';
+import PaymentSuccess from './Components/PaymentSuccessful/PaymentSuccessful.tsx';
+import CartProvider from './Components/CartProvider/CartProvider.tsx';
+import PageNotFound from './Components/PageNotFound/PageNotFound.tsx';
+import SignUp from './Components/SignUp/SignUp.tsx';
 
 
 function App() {
